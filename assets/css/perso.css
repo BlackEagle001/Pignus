@@ -1,0 +1,11 @@
+.image-center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
+	width: 100%;
+}
+
+#nav-article ul{
+	margin: 0px;
+}

@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="fr">
+	<head>
+		<title>Pignus - Backup</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
+		<link rel="stylesheet" href="../assets/css/perso.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo">Pignus</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../index.html">Accueil</a></li>
+							<li class="active"><a href="backup.html">Backup</a></li>
+							<li><a href="malware.html">Malware</a></li>
+							<li><a href="ransomware.html">Ransomware</a></li>
+							<li><a href="honeypot.html">Honeypot</a></li>
+						</ul>
+						<!--ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul-->
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">19 Décembre 2018</span>
+									<h1 id="Introduction">Backup<br />
+									Tout va bien quand tout va mal</h1>
+										<p>Imaginez-vous en train de taper les dernières lignes d’un rapport qui vous a coûté des jours de travail, des litres de café et des crampes lombaires. Si vous ne le rendez pas le lendemain à la première heure, il vous coûtera également votre hypothétique augmentation. Heureusement, vous n’êtes qu’à deux doigts de le terminer. C’est naturellement le moment rêvé pour votre vieux disque dur de tomber en panne, corrompant ainsi votre rapport, et votre avenir en prime. Mais pas de panique, en tant qu’utilisateur prévoyant, vous avez en réserve une sauvegarde de vos données, fraiche d’hier soir, sur votre disque externe. Comment dites-vous ? Vous avez omis d’entreprendre un backup régulier de vos fichiers importants ? Ah, bon. Eh bien il est manifestement temps pour vous d'apprendre une bonne attitude. À travers cet article, vous aurez l’occasion de (re)faire connaissance avec un principe de base de sécurité informatique : le backup, ou sauvegarde en français. Les façons de le réaliser sont multiples afin de s’adapter à tous les goûts, que vous soyez un professionnel ou un particulier. Qu’il s’agisse de documents importants, de fichiers multimédias tels que photos et vidéos, ou encore des paramètres personnalisés d’un programme de précision, votre ordinateur regorge certainement de données que vous ne voudriez perdre pour rien au monde. À une autre échelle, divers incidents se sont déjà produits dans des entreprises importantes telles que la compagnie aérienne <a href="https://www.pcmag.com/news/346872/delta-scrambles-to-restore-servers-after-power-cut" target="_blank">Delta</a>. En 2016, une coupure de courant a simplement éteint tous les terminaux, annulant ainsi plus de 1300 vols et engendrant une perte de 100 millions de dollars. Tout cela car aucun système de backup efficace n’avait été mis au point. Vous comprenez alors que si ce genre d’incident peut arriver à une entreprise de cette taille, c’est qu’il peut également arriver sur votre ordinateur personnel.</p>
+										<p>Vous verrez plus loin dans votre lecture qu’il est simple de sauvegarder correctement et qu’il serait alors dommage de s’en priver. Maintenant détendez-vous et laissez-vous guider vers le monde merveilleux du backup informatique.</p>
+								</header>
+								
+								<div class="box" id="nav-article"><ul>
+									<li><a href="#Introduction">Introduction</a></li>
+									<li><a href="#Definition">Définition</a>
+										<ul>
+											<li><a href="#Distinction_entre_enregistrement_backup_et_archivage">Distinction entre enregistrement, backup et archivage</a></li>
+											<li><a href="#Backup_et_synchronisation">Backup et synchronisation</a></li>
+										</ul></li>
+									<li><a href="#Principes_du_backup">Principes du Backup</a>
+										<ul>
+											<li><a href="#Full_backup">Full backup</a></li>
+											<li><a href="#Incremental">Incremental</a></li>
+											<li><a href="#Reverse_incremental">Reverse incremental</a></li>
+											<li><a href="#Conservation_des_backups">Conservation des backups</a></li>
+										</ul></li>
+									<li><a href="#Support_de_backup">Support de backup</a>
+										<ul>
+											<li><a href="#Local">Local</a>
+												<ul>
+													<li><a href="#Disque_dur">Disque_dur</a></li>
+													<li><a href="#SSD">SSD</a></li>
+													<li><a href="#Securité">Sécurité</a></li>
+												</ul></li>
+											<li><a href="#En_ligne">En ligne</a>
+												<ul>
+													<li><a href="#Cloud">Cloud</a></li>
+													<li><a href="#P2P">P2P</a></li>
+												</ul></li>
+										</ul></li>
+									<li><a href="#Programmes_de_backup">Programmes de backup</a></li>
+									<li><a href="#Demonstration">Démonstration</a>
+										<ul>
+											<li><a href="#Materiel">Matériel</a></li>
+											<li><a href="#Preparer_les_disques_USB">Préparer les disques USB</a></li>
+											<li><a href="#Monter_le_disque_en_reseau">Monter le disque en réseau</a></li>
+											<li><a href="#Automatiser_le_backup">Automatiser le backup</a></li>
+											<li><a href="#Encore_une_chose…">Encore une chose…</a></li>
+										</ul></li>
+									<li><a href="#Conclusion">Conclusion</a></li>
+									<li><a href="#References">Références</a></li>
+								</ul></div>
+								
+								<div class="image main"><img src="images/backup.jpg" alt="" /></div>
+								
+								<h2 id="Definition"><a href="#Definition">Définition</a></h2>
+									<p>La notion informatique de backup, ou sauvegarde en français, consiste à copier une donnée, généralement d’un support à un autre, afin d’en assurer la sécurité. Cela permet en effet d’avoir à portée de main un double des fichiers importants, indépendant de l’ordinateur. En cas de perte, vol ou corruption de ces fichiers sur le système, il sera toujours possible d’en récupérer une copie depuis le support de sauvegarde.</p>
+									<h3 id="Distinction_entre_enregistrement_backup_et_archivage"><a href="#Distinction_entre_enregistrement_backup_et_archivage">Distinction entre enregistrement, backup et archivage</a></h3>
+										<p>Il est important de ne pas confondre le <i>backup</i> avec l’<i>enregistrement de données</i> et l’<i>archivage</i> qui sont trois notions certes proches mais qui diffèrent en certains points. Alors que l’enregistrement se préoccupe d'écrire des données sur un support physique, le backup se contente de dupliquer ces données déjà enregistrées afin de les mettre en lieu sûr. En d’autres termes, l’enregistrement ne s’agit que du principe de garder un fichier sur son disque dur, ou clé USB ou autre, afin de pouvoir le récupérer après l’extinction du système (en opposition à la mémoire vive).</p>
+										<p>De son côté, l’archivage est utilisé pour le long terme. Une fois validé par son auteur et vraisemblablement exempt de modifications futures, un fichier peut être archivé en l’état afin d’être classé, indexé et mis « au repos » pour une durée indéterminée. Ainsi, la sauvegarde d’un fichier est nécessairement précédée de son enregistrement, mais n’annonce pas forcément son archivage.</p>
+									<h3 id="Backup_et_synchronisation"><a href="#Backup_et_synchronisation">Backup et synchronisation</a></h3>
+										<p>Une autre notion à distinguer du backup est la <i>synchronisation</i>. En effet, cette dernière est régulièrement considérée à tord comme un synonyme de la sauvegarde, alors qu’il s’agit bien de deux opérations différentes. Le backup d’un fichier le dupliquera sur un autre support externe dans le but de pouvoir le récupérer en son état d’origine si jamais celui-ci a été modifié par mégarde depuis le système. De son côté, la synchronisation s’arrangera pour que les deux fichiers copiés restent les mêmes quoi qu’il arrive. Si l’un est modifié, l’autre l’est aussi, et donc de la même manière, la suppression de l’un entraine la suppression automatique de l’autre.</p>
+								<h2 id="Principes_du_backup"><a href="#Principes_du_backup">Principes du Backup</a></h2>
+									<p>Il existe évidemment de nombreuses manières de sauvegarder ses données, mais quatre grands types doivent être retenus : la sauvegarde totale, l’incrémentielle, la décrémentielle et la différentielle . Chacun se complète et s’adapte selon les besoins des particuliers et des entreprises.</p>
+									<h3 id="Full_backup"><a href="#Full_backup">Full backup</a></h3>
+										<p>La sauvegarde totale ou complète est certainement la plus simple à comprendre et à mettre en oeuvre, car elle copie tous les fichiers préalablement sélectionnés. Elle ne fait pas de distinction entre les fichiers modifiés ou non, anciens ou récents. De ce fait, elle est également la plus sûre et précise pour restaurer les données, le chemin inverse de la sauvegarde. Cependant, cette performance a naturellement un coût en espace de stockage et en durée d’exécution, celle-ci étant considérablement accrue pour de gros volumes. Pour une utilisation hebdomadaire par exemple, un particulier lambda qui souhaite sauvegarder son système de quelques dizaines de gigaoctets y verra peu d’inconvénients. Mais pour une entreprise confortablement installée de son côté, effectuer ce type de backup chaque semaine serait infructueux. Non seulement le temps d’exécution, mais l’espace de stockage demandé font que cette méthode ne s’adapte pas à tous les cas de figure. C’est pourquoi les deux types suivant ont tout leur intérêt.<p>
+									<h3 id="Incremental"><a href="#Incremental">Incremental</a></h3>
+										<p>En partant d'abord d’un full backup, la sauvegarde incrémentielle permet de sauvegarder seulement les fichiers qui auraient été modifiés ou ajoutés depuis. C’est donc un gain de temps considérable, mais qui comporte également ses désavantages. Le principe ici est de faire chaque jour un backup uniquement des modifications de données par rapport à la veille, ce qui complique la restauration.</p>
+										<div class="table-wrapper">
+											<table class="alt">
+												<thead>
+													<tr>
+														<th>Jour 1 : full backup</th>
+														<th>Jour 2 : incremental</th>
+														<th>Jour 3 : incremental</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Fichier 1</td>
+														<td>Fichier 1 modifié</td>
+														<td>Fichier1 modifié et déplacé</td>
+													</tr>
+													<tr>
+														<td>Fichier 2</td>
+														<td>Fichier 2 renommé</td>
+														<td>Fichier2 devient Fichier3</td>
+													</tr>
+												<tbody>
+											</table>
+										</div>
+										<p>Pour mieux comprendre, prenez l’exemple d’une sauvegarde complète effectuée un Jour1, vous êtes au Jour5 et vous voulez récupérer les données telles qu’elles étaient le Jour3. Vous devrez restaurer le full backup du Jour1, ensuite l’une après l’autre les sauvegardes incrémentielles des Jour2 et Jour3 afin de récupérer vos fichiers du Jour3. Vous obtiendrez alors le Jour5, le Fichier1 modifié dans son répertoire d'origine et dans son nouveau répertoire alors que vous ne voulez avoir que le Fichier1 modifié dans son nouveau répertoire. Quant au Fichier2 vous aurez le Fichier2 du Jour2 et le Fichier3 du Jour3 dans le même répertoire alors qu'on aurait voulu avoir seulement le Fichier3.</p>
+										<p>Et pour éviter ce genre de situation, il convient de sélectionner correctement au préalable les fichiers à sauvegarder avant chaque sauvegarde incrémentielle. C’est une tâche qui peut donc s'avérer très efficace et rapide si l’on est organisé et méticuleux, mais qui peut devenir un cauchemar en cas de mauvaise configuration dès le départ.</p>
+									<h3 id="Reverse_incremental"><a href="#Reverse_incremental">Reverse incremental</a></h3>
+										<p>La sauvegarde reverse incremental, ou décrémentielle, peut être définie comme l’inverse de l’incrémentielle. Alors que pour l’incrémentielle la sauvegarde la plus ancienne est le full backup et les suivantes viennent la compléter partiellement, pour la décrémentielle c’est la sauvegarde la plus récente qui est complète. Cela veut donc dire que pour récupérer les données dans leur état le plus récent, il ne faut cette fois restaurer que le dernier full backup, sans s’occuper de toutes les anciennes sauvegardes résiduelles. Cela offre un gain de temps et de facilité considérable. Mais le désavantage se trouve lors de l’opération de sauvegarde, qui impose de construire à chaque fois une nouvelle sauvegarde complète et de transformer la précédente en sauvegarde décrémentielle. Le processus est plus lourd que pour la simple sauvegarde complète, mais permet d’économiser de l’espace sur les disques de stockage.</p>
+									<h3 id="Differential">Differential</h3>
+										<p>À l’image de l’incrémentielle, la sauvegarde différentielle ne copie que les fichiers modifiés ou ajoutés depuis le dernier full backup. La différence entre ces deux techniques se comprend mieux à la restauration. Alors que l’incrémentielle exige de restaurer toutes les sauvegardes précédents le jour dont vous voulez récupérer les fichiers, la différentielle vous permet de ne restaurer que la sauvegarde de ce jour précis après avoir restaurer le full backup. En cas de mauvaise manipulation lors de la configuration de la sauvegarde, vous risquez bien moins de vous retrouver avec des doublons de fichiers comme avec l’incrémentielle. Cependant, son avantage peut devenir un inconvénient car elle n’offre pas de rémanence. Vous n’aurez pas la possibilité de retrouver l’état d’un fichier tel qu’il était entre la sauvegarde complète et la dernière sauvegarde différentielle. Il y a donc un gain de temps considérable par rapport à l’incrémentielle, mais elle sera moins précise dans les différentes versions de vos fichiers modifiés.</p>
+									<h3 id="Conservation_des_backups"><a href="#Conservation_des_backups">Conservation des backups</a></h3>
+										<p>Quel que soit le type de backup utilisé, les données sauvegardées peuvent avoir une certaine durée de conservation, c’est-à-dire qu’après un temps déterminé où les sauvegardes les plus anciennes seront automatiquement effacées afin de laisser la place aux nouvelles. Par exemple, une conservation de quatre semaines gardera intactes les données sauvegardées à une date précise pendant 28 jours, après quoi elles ne seront plus disponible à la restauration. Autrement dit, plus la durée de conservation est longue, plus il y aura de versions des mêmes données, ce qui implique un espace de stockage relativement important et un système d’indexation adapté en conséquence. Cette option n’est évidemment pas obligatoire si vous souhaitez garder vos données indéfiniment.<p>
+
+								<h2 id="Support_de_backup"><a href="#Support_de_backup">Support de backup</a></h2>
+									<p>Il est temps maintenant d’aborder un sujet un peu plus concret, celui du choix du support de stockage qui hébergera vos sauvegardes. Cette partie de la démarche est certainement la plus importante car elle influencera directement la sécurité et la longévité de vos données.</p>
+									<p>Clarifions des choses dès le début, qu’elles soient locales ou en réseau, les données seront sauvegardées sur des support physiques. Qu’il s’agisse d’un disque dur externe directement branché à l’ordinateur, d’un NAS ou encore d’un service cloud renommé, les données se retrouveront sur des dispositifs sensibles aux dégâts physiques quels qu’ils soient. Le risque zéro n’existe pas, mais quelques précautions peuvent largement nous permettre de nous en approcher.</p>
+									<h3 id="Local"><a href="#Local">Local</a></h3>
+										<p>Les sauvegardes locales se font sur des supports directement connectés à l’ordinateur, en USB par exemple ou en réseau local. Elles évitent les risques d’attaques liées à internet, mais du coup ne sont disponibles que si vous y avez accès physiquement.</p>
+										<h4 id="Disque_dur"><a href="#Disque_dur">Disque_dur</a></h4>
+											<p>Pour ce qui est du choix du support en lui-même, il existe de nombreux types de stockages différents. Le plus commun à l’heure actuelle reste le bon vieux disque dur, au format 2.5 ou 3.5 pouces, qui offre le meilleur rapport octets/prix. Seulement une <a href="https://www.amazon.fr/Toshiba-HDTB420EK3AA-Disque-Externe-Portable/dp/B07994QL95/ref=sr_1_1" target="_blank">septantaine d’euros</a> vous seront demandés pour vous procurer un disque de 2To à l'heure où nous écrivons ces lignes, ce qui est largement suffisant pour des backups à usage domestique. Ils sont par ailleurs réputés pour leur fiabilité pratiquement infinie en cycles d’écriture, caractéristique de choix pour un support de sauvegarde. Cependant, si leur prix est alléchant, il ne faut pour autant pas oublier qu’ils sont assez sensibles aux agressions externes telles que chocs et magnétisations. Les failles mécaniques sont également à prendre en compte. Il peut arriver que le bras de lecture glisse sur les plateaux et raye complètement le disque, le rendant inutilisable. Les disques durs classiques sont donc une excellente solution lorsque l’on souhaite un espace de stockage conséquent à prix contenu, si l’on évite de le déplacer trop souvent.</p>
+										<h4 id="SSD"><a href="#SSD">SSD</a></h4>
+											<p>Une alternative plus moderne est le SSD (Solid-State Drive). Cette technologie n’utilise aucun mouvement mécanique ni de magnétisation qui étaient la base des disques durs classiques. Elle se rapproche beaucoup de la technologie des clés USB et cartes mémoires. Ainsi, le SSD est très résistant aux chocs et aux vibrations ce qui en fait un support de backup parfait pour le voyage. De plus, il offre des performances considérablement supérieures en débit, latence et consommation électrique. Toutefois, les SSD ont un nombre de cycles d’écriture limités. Et même si les progrès techniques tendent à élargir de plus en plus cette limite, cela reste un sérieux désavantage en cas d’utilisation pour des backups. Et c’est évidemment sans parler du prix qui surclasse toujours actuellement les disques durs classiques en terme de capacité. En terme de tarifs, pour des supports externes, on passe du simple au quadruple, voire au quintuple pour des marques réputées comme <a href="https://www.amazon.fr/dp/B074MCNDSK/ref=twister_B074PY5Q9S" target="_blank">Samsung</a>, entre un disque dur classique et un SSD d’une même capacité. En tant que support rapide et solide, les SSD sont donc une meilleure alternative aux disques durs pour des sauvegardes en déplacement depuis un ordinateur portable par exemple. Mais ils ne sont pas adaptés à une écriture intensive de fichiers volumineux de part leur cycles limités.<p>
+										<h4 id="Securite"><a href="#Securité">Sécurité</a></h4>
+											<p>Il reste évidemment d’autres supports de stockages qui pourraient être utilisés théoriquement, mais qui pratiquement parlant ne sont pas intéressant pour un usage backup. Les clés USB et cartes mémoires sont bon-marché et légères, mais de part leur taille sont trop susceptibles d’être égarées ou volées. Il est préférable de retenir les deux choix principaux : le disque dur pour un usage serveur local fixe avec une très grande capacité de stockage, et le SSD pour un usage nomade. Mais dans tous les cas, il est sérieusement conseillé de penser au chiffrement. En effet, si les sauvegardes locales diminuent grandement les risques de vols de données par internet, le vol physique est toujours envisageable. C’est pourquoi il existe des logiciels gratuits et open-source qui incitent les utilisateurs à chiffrer leurs disques. Le chiffrement permet de rendre vos données illisibles à un utilisateur non autorisé. Le logiciel <a href="https://diskcryptor.net/wiki/Main_Page" target="_blank">DiskCryptor</a> (Windows) est un excellent outil pour cette tâche et le site de sécurité informatique français <a href="https://www.zataz.com/" target="_blank">ZATAZ</a> en a réaliser un <a href="https://www.zataz.com/chiffrer-disque-dur-simplement/" target="_blank">tutoriel</a> très complet. On abordera plus loin les différents programmes qui facilitent les backup et proposent généralement une solution de chiffrement.</p>
+									<h3 id="En_ligne"><a href="#En_ligne">En ligne</a></h3>
+									<p>Si le backup local ne vous intéresse pas, il vous reste les solutions sur internet. Cette fois, la sauvegarde ne se trouvera pas directement entre vos mains mais sur les serveurs du service employé pour cette tâche si vous optez pour un cloud. Vous y aurez accès facilement depuis n’importe quel appareil connecté à internet. Il existe également le backup en P2P (peer-to-peer), dite sauvegarde distribuée. La sauvegarde sur internet comporte son lot d’avantages, mais hélas peut vite être rattrapée par les réalités plus sombres du web.</p>
+									<h4 id="Cloud"><a href="#Cloud">Cloud</a></h4>
+										<p>Les cloud sont de plus en plus populaires en raison de leur prix de plus en plus démocratiques et de leurs services alléchants, sans parler de l’avantage de base : une disponibilité des données depuis n’importe où. Évidemment, cela sous-entends une connexion internet, et qui dit internet dit hackers. Combien de fois les titres de l’actualité dénonçaient des vols de données, de photos de stars depuis l'<a href="https://www.ibtimes.com/icloud-nude-leaks-26-celebrities-affected-nude-photo-scandal-1692540" target="_blank">iCloud</a> d'Apple ? Malgré des protocoles de sécurité constamment mis à jour, tout ce qui se trouve sur internet se retrouve à la portée de n’importe qui. Les hacker évoluent plus vite que les industries en matière de recherche de failles de sécurité. Confier les sauvegardes de vos données sensibles à un service en ligne peut s’avérer dangereux. Car même si elles seront immédiatement chiffrées, elles seront face à une armée de hackers prêts à tout pour les déchiffrer.</p>
+										<p>Bien sûr je dramatise. À moins que vous soyez victime d’une attaque ciblée (ce qui n’est d’ailleurs pas si rare), il y a peu de chances que vos sauvegardes en ligne soient volées. Enfin, en admettant que le service de cloud utilisé soit sérieux et réputé en matière de sécurité. Mais hélas, les risques sont sévèrement plus présents lorsque vos données ont accès direct à internet et donc au monde entier et ses utilisateurs mal intentionnés. C’est donc un conseil personnel que je vous donne d’éviter ce type de backup, au moins pour vos données les plus sensibles.</p>
+										<p>Néanmoins, certaines entreprises ont pu prouver une bonne réputation dans ce milieu. Si ce service vous intéresse, voici trois noms intéressants, d’ailleurs acclamés par le magazine <a href="https://www.pcmag.com/">PCMag</a> : <a href="https://www.idrive.com/idrive/signup/el/ziffdavis" target="_blank">iDrive</a>, <a href="https://www.acronis.com/en-us/personal/computer-backup/" target="_blank">Acronis True Image</a> et <a href="https://www.sosonlinebackup.com/" target="_blank">SOS Online Backup</a>. Ce dernier est plutôt cher comparé à la concurrence, et ne permet pas un espace de stockage très élevé, mais il surclasse les autres en terme de sécurité. Il est donc à privilégier si vous n’avez d’autre choix que la sauvegarde en ligne pour des fichiers sensibles.</p>
+									<h4 id="P2P"><a href="#P2P">P2P</a></h4>
+										<p>Le principe du peer-to-peer, abrégé P2P, est assez connu pour le partage de fichier sur internet. Contrairement au modèle réseau basique de type client-serveur où les clients individuels demandent des services à un serveur centralisé, le P2P rend chaque machine à la fois client et serveur. Il y a un partage des ressources entre les différents noeuds interconnectés, ce qui fait que lorsque une machine veut récupérer un fichier, elle devra demander une partie de ce dernier à chacune des autres machines du réseau afin de reconstituer ce fichier.</p>
+										<p>Ce modèle est depuis peu utilisé par quelques start up pour sauvegarder des données sur des réseaux d’entreprise, aussi bien en LAN (local) qu’en WAN (internet). L’idée est surtout de profiter de l’espace de stockage libre souvent astronomique des grands serveurs d’entreprise. Le système découpe en blocs les données à sauvegarder et les distribue vers les autres postes du réseau, en effectuant de multiples copies sur plusieurs machines. Les données sont ainsi disponibles lorsque certaines machines sont éteintes, et protégées en cas de crash du disque.</p>
+										<p>Cette technique en est encore à ses balbutiements mais semble intéressante, surtout sur le point de la récupération en cas de panne d’une machine. Reste encore le sujet de la sécurité des données, qui revient finalement au même que pour le cloud si le réseau est connecté en WAN.</p>
+
+								<h2 id="Programmes_de_backup"><a href="#Programmes_de_backup">Programmes de backup</a></h2>
+									<p>Nous avons parlé précédemment des différents types de backup et de leur utilité ainsi que des supports de stockages à privilégier. À présent il est temps de prendre connaissance des différentes façons de mettre tout cela en oeuvre. Et même s’il est possible de réaliser manuellement les procédures de backup, ou d’en écrire l’automatisation dans un script fait maison, de nombreux logiciels sont là pour nous faciliter la vie, alors pourquoi s’en priver ?</p>
+									<p><a href="https://www.storagecraft.com/products/shadowprotect" target="_blank">StorageCraft ShadowProtect Desktop</a> est une solution professionnelle adaptée aux particuliers sous Windows. Il profite d'une renommée internationale en tant que programme de sauvegarde locale aussi bien sur le plan de la sécurité, rapidité et fiabilité. Tout y est personnalisable pour plaire aux plus méticuleux. Cependant, ce logiciel s’adresse essentiellement à un public aguerri à cause de sa relative complexité et de son prix, certes justifié par sa fiabilité, mais au-dessus de la concurrence (comptez une bonne centaine d’euros).</p>
+									<p><a href="https://www.acronis.com/en-us/personal/computer-backup/" target="_blank">Acronis True Image</a> peut être une alternative très intéressante à ShadowProtect. Beaucoup plus intuitif, habillé d’une interface moderne et friendly, pour un prix diminué de moitié (50 euros) et disponible pour Windows et macOS, il se destine décidément à un public bien plus large. Ce logiciel de backup multifonctions combine plusieurs tâches. Il propose notamment, en plus de la sauvegarde classique, de créer des images disques de secours du système et du clonage de disque complet. Malgré son interface épurée, il laisse un choix d’options avancées assez conséquent, mais reste en-dessous de ShadowProtect à ce niveau. Acronis est également connu pour son service de cloud fiable et sécurisé. Ce soft se rapproche certainement du meilleur programme de backup pour les utilisateurs qui cherchent à se faciliter la vie tout en profitant d’un système de sauvegarde fiable et sécurisé.</p>
+									<p><a href="http://www.opbyte.it/grsync/download.html" target="_blank">Grsync</a> est un puissant programme qui propose aux utilisateurs Linux une interface claire afin de réaliser des backup facilement. Très complet, il permet des backup incrémentiels, préserve les permissions des fichiers, privilèges, scripts d’automatisation et bien d’autres. Il est évidemment moins poussé que les deux précédents en matière de fonctionnalités satellites, mais il fait le travail efficacement. Il a l’avantage d’être gratuit et open source.</p>
+								
+								<h2 id="Demonstration"><a href="#Demonstration">Démonstration</a></h2>
+									<p>Maintenant que vous avez bien compris l’importance de sauvegarder régulièrement vos données, il est temps de mettre en pratique la théorie. Je vous propose ici un tutoriel pour réaliser votre propre NAS (Network Attached Storage) à partir d’un Raspberry Pi. L’idée est de se débrouiller à moindre coût pour obtenir un disque de backup en réseau local avec votre ordinateur sous Linux afin d’en sauvegarder les données automatiquement et périodiquement. Les NAS vendus dans le commerce ont beau être efficaces, ils se démarquent surtout par leur prix. Sachant qu’ils faut encore ajouter le prix du ou des disques durs, vous arrivez rapidement à un bon 350-400 euros de matériel.</p>
+									<h3 id="Materiel"><a href="#Materiel">Matériel</a></h3>
+										<ul>
+											<li><p><b>Un <a href="https://www.amazon.fr/UCreate-Raspberry-Pi-Desktop-Starter/dp/B07BNPZVR7/ref=sr_1_7" target="_blank">Raspberry Pi 3 B+</a> sous Raspbian</b> (60&euro;)<p></li>
+											<li><p><b>2 <a href="https://www.amazon.fr/Toshiba-HDTB410EK3AA-Disque-Externe-Portable/dp/B07997KKSK" target="_blank">disques durs externes</a></b> (100&euro;)<br />
+												L’un sera relié en réseau et monté sur votre ordinateur afin d’y placer les données, l’autre à sauvegarder ces données.</p></li>
+											<li><p><b>Un <a href="https://www.amazon.fr/Anker-Ultra-Chargeur-Secteur-Inclus/dp/B0192W3HX8/ref=sr_1_14" target="_blank">hub USB alimenté sur secteur</a></b> (15&euro;)<br />
+												Pourquoi nous faut-il un hub USB alimenté sur secteur alors que le Raspberry possède largement assez de ports ? Simplement car l’alimentation du mini ordinateur ne peut donner assez de jus pour la carte et les deux disques.</p></li>
+										</ul>
+									<h3 id="Preparer_les_disques_USB"><a href="#Preparer_les_disques_USB">Préparer les disques USB</a></h3>
+										<p>Assurez-vous que les disques durs soient reliés au Raspberry. Connectez-vous en SSH et lancez la commande fdisk avec l’option -l pour vérifier vos disques. Vous pouvez voir que de mon côté j’utilise deux disques de 250G qui ne sont certes pas volumineux mais feront l’affaire pour le tutoriel.</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo fdisk -l
+
+&lt;...&gt;
+
+Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: E45DBC15-F9D7-404F-92C1-94174B890F5A
+
+Device     Start       End   Sectors   Size Type
+/dev/sda1     40    409639    409600   200M EFI System
+/dev/sda2 409640 488134983 487725344 232.6G Apple HFS/HFS+
+
+Disk /dev/sdb: 232.9 GiB, 250059350016 bytes, 488397168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: A65CEF35-B90A-562B-C285-6524794AE5BF
+
+Device     Start       End   Sectors   Size Type
+/dev/sdb1     40    409639    409600   200M EFI System
+/dev/sdb2 409640 488131663 487721616 232.6G Apple HFS/HFS+</code></pre>
+										<p>Les disques sont donc représentés par /dev/sda et /dev/sdb. Il va falloir les formater en ext4 pour en tirer le meilleur parti avec le Raspberry. La commande fdisk /dev/sda vous proposera une marche guidée pour les préparer correctement. Suivez simplement mon schéma en utilisant les options que j’ai employé. Lorsqu’il n’y a rien à côté d’un « : » c’est que vous pouvez laisser par défaut et donc valider sans option précise.</p>
+										<p>Répétez l’opération en remplaçant /dev/sda par /dev/sdb.</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.29.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Command (m for help): o
+Created a new DOS disklabel with disk identifier 0xa7d783a8.
+
+Command (m for help): n
+Partition type
+	p	primary (0 primary, 0 extended, 4 free)
+	e	extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1):
+First sector (2048-488397167, default 2048):
+Last sector, +sectors or +size{K,M,G,T,P} (2048-488397167, default 488397167):
+
+Created a new partition 1 of type 'Linux' and of size 232.9 GiB.
+
+Command (m for help): p
+
+Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa7d783a8
+
+Device    Boot Start       End   Sectors   Size Id Type
+/dev/sda1       2048 488397167 488395120 232.9G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.</code></pre>
+										<p>Vous pouvez à présent formater la partition nouvellement créée /dev/sda1 avec le système de fichier ext4. Également à répéter avec /dev/sdb1 :</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo mkfs.ext4 /dev/sda1
+mke2fs 1.43.4 (31-Jan-2017)
+Creating filesystem with 61049390 4k blocks and 15269888 inodes
+Filesystem UUID: 3408c149-a7c4-4401-b147-43fafbba484f
+Superblock backups stored on blocks:
+32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+4096000, 7962624, 11239424, 20480000, 23887872
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (262144 blocks): done
+Writing superblocks and filesystem accounting information: done</code></pre>
+										<p>Il est temps de donner un nom plus évocateur aux partitions :</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo e2label /dev/sda1 data
+pi@raspberrypi:~ $ sudo e2label /dev/sda1 backup</code></pre>
+										<p>Le Raspberry a parfois tendance à ne pas monter les disques automatiquement au démarrage, c’est pourquoi nous allons installer l’utilitaire autofs qui réglera ce problème :</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo apt update
+pi@raspberrypi:~ $ sudo apt install autofs</code></pre>
+										<p>Il faut maintenant configurer autofs. D’abord créez un dossier /nas :</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo mkdir /nas</code></pre>
+										<p>Ensuite modifiez le fichier /etc/auto.master :</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo nano /etc/auto.master</code></pre>
+										<p>Ajoutez à la fin du fichier la ligne suivante :</p>
+										<pre><code  class="language-bash">/nas /etc/auto.usb</code></pre>
+										<p>Sauvegardez et quittez en faisant Ctrl + x puis « y » puis Enter.</p>
+										<p>Créez le fichier /etc/auto.usb :</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo nano /etc/auto.usb</code></pre>
+										<p>Et ajoutez-y les ligne suivante :</p>
+<pre><code  class="language-bash">data -fstype=ext4,rw :/dev/disk/by-label/data
+backup -fstype=ext4,rw :/dev/disk/by-label/backup</code></pre>
+										<p>Sauvegardez et quittez.</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo service autofs restart</code></pre>
+										<p>Redémarrer le service autofs :</p>
+										<p>Vous devriez maintenant avoir accès au disque dans /nas/backup et vérifier qu’il est bien monté correctement :</p>
+<pre><code  class="language-bash">pi@raspberrypi:~ $ cd /nas/data
+pi@raspberrypi:/nas/data $ cd /nas/backup
+pi@raspberrypi:/nas/backup $ mount
+
+&lt;...&gt;
+
+/etc/auto.usb on /nas type autofs (rw,relatime,fd=6, &lt;…&gt; ,maxproto=5,indirect)
+
+/dev/sda1 on /nas/data type ext4 (rw,relatime,data=ordered)
+/dev/sdb1 on /nas/backup type ext4 (rw,relatime,data=ordered)</code></pre>
+										<p>Voilà, vos disques sont correctement montés sur votre Raspberry.</p>
+									<h3 id="Monter_le_disque_en_reseau"><a href="#Monter_le_disque_en_reseau">Monter le disque en réseau</a></h3>
+										<p>Maintenant que les disques sont montés sur le Raspberry, nous allons en monter un par le réseau sur notre machine Linux. Pour ce faire, vous pouvez installer NFS (Network File System) sur le Raspberry :</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo apt install nfs-kernel-server</code></pre>
+										<p>Ensuite il va falloir préciser quel dossier NFS devra monter en réseau. Ici ça sera le disque data qui sera le seul accessible hors du Raspberry, l’autre ne servira que pour les backup. Pour ce faire, éditez le fichier /etc/exports en ajoutant la ligne suivante :</p>
+										<pre><code  class="language-bash">pi@raspberrypi:~ $ sudo nano /etc/exports</code></pre>
+										<pre><code  class="language-bash">/nas/data *(rw,sync,no_subtree_check)</code></pre>
+										<p>Ça y est, le disque est maintenant disponible sur votre réseau local. À présent vous pouvez le monter sur votre ordinateur Linux et y placer les fichiers que vous voudrez.</p>
+										<p>Afin de monter le disque sur votre ordinateur (donc plus en SSH sur le Raspberry), tapez ces commandes :</p>
+<pre><code  class="language-bash">you@desktop:~ $ sudo mkdir /nas/data
+you@desktop:~ $ sudo mount -t nfs &lt;raspberry-hostname-or-ip&gt;:/nas/data /nas/data</code></pre>
+									<h3 id="Automatiser_le_backup"><a href="#Automatiser_le_backup">Automatiser le backup</a></h3>
+										<p>Les disques sont connectés, vous pouvez garnir l’un d’eux de vos données depuis votre ordinateur, il est temps de créer la procédure de backup. J’ai choisi la stratégie de sauvegarde sur cinq ans, qui va créer un premier full backup et ensuite des backup incrémentiels. Après cinq ans, vous aurez le schéma suivant :</p>
+										<ul>
+											<li>7 backup journaliers</li>
+											<li>4 backup hebdomadaires</li>
+											<li>backup mensuels</li>
+											<li>backup annuels</li>
+										</ul>
+										<p>Cette stratégie vous permettra aisément d’opérer un archivage des données les plus anciennes tout en gardant une sauvegarde régulière.</p>
+										<p>Pour réaliser tout cela, nous utiliserons un script et une tâche d’automatisation dans le crontab.</p>
+										<p>Créez un dossier /nas/data/backup_scripts et créez-y un fichier /daily.sh :</p>
+<pre><code class="language-bash">you@desktop:~ $ sudo mkdir /nas/data/backup_scripts
+you@desktop:~ $ sudo nano /nas/data/backup_scripts/daily.sh</code></pre>
+										<p>Copiez/collez dans le fichier le script suivant et sauvegardez/quittez :</p>
+										<a href="backup/daily.sh" download>daily.sh</a>
+										<p><button class="boutton" title="Clicker pour afficher/cacher le code bash" type="button" onclick="if(document.getElementById('code-daily.sh') .style.display=='none') {document.getElementById('code-daily.sh') .style.display=''}else{document.getElementById('code-daily.sh') .style.display='none'}">Afficher/Cacher le code</button></p>
+<pre id="code-daily.sh" style="display: none"><code class="language-bash">#!/bin/bash
+
+TODAY=$(date +%Y-%m-%d)
+DATADIR=/nas/data/
+BACKUPDIR=/nas/backup/
+
+function listYearlyBackups() {
+	for i in 0 1 2 3 4 5
+		do ls ${BACKUPDIR} | egrep "$(date +%Y -d "${i} year ago")-[0-9]{2}-[0-9]{2}" | sort -u | head -n 1
+	done
+}
+function listMonthlyBackups() {
+	for i in 0 1 2 3 4 5 6 7 8 9 10 11 12
+		do ls ${BACKUPDIR} | egrep "$(date +%Y-%m -d "${i} month ago")-[0-9]{2}" | sort -u | head -n 1
+	done
+}
+function listWeeklyBackups() {
+	for i in 0 1 2 3 4
+		do ls ${BACKUPDIR} | grep "$(date +%Y-%m-%d -d "last monday -${i} weeks")"
+	done
+}
+function listDailyBackups() {
+	for i in 0 1 2 3 4 5 6
+		do ls ${BACKUPDIR} | grep "$(date +%Y-%m-%d -d "-${i} day")"
+	done
+}
+function getAllBackups() {
+	listYearlyBackups
+	listMonthlyBackups
+	listWeeklyBackups
+	listDailyBackups
+}
+function listUniqueBackups() {
+	getAllBackups | sort -u
+}
+function listBackupsToDelete() {
+	ls ${BACKUPDIR} | grep -v -e "$(echo -n $(listUniqueBackups) |sed "s/ /\\\|/g")"
+}
+
+cd ${BACKUPDIR}
+listBackupsToDelete | while read file_to_delete; do
+	rm -rf ${file_to_delete}
+done
+
+SCRIPTDIR=/nas/data/backup_scripts
+LASTDAYPATH=${BACKUPDIR}/$(ls ${BACKUPDIR} | tail -n 1)
+TODAYPATH=${BACKUPDIR}/${TODAY}
+
+if [[ ! -e ${TODAYPATH} ]]; then
+	mkdir -p ${TODAYPATH}
+fi
+
+rsync -a --link-dest ${LASTDAYPATH} ${DATADIR} ${TODAYPATH} $@
+
+${SCRIPTDIR}/deleteOldBackups.sh</code></pre>
+										<p>Le script d’automatisation de backup est maintenant prêt, nous pouvons créer une tâche dans le crontab :</p>
+<pre><code  class="language-bash">you@desktop:~ $ sudo crontab -e
+no crontab for root - using an empty one
+
+Select an editor. To change later, run 'select-editor'.
+1. /bin/ed
+2. /bin/nano &lt;---- easiest
+3. /usr/bin/vim.tiny
+Choose 1-3 [2]: 2</code></pre>
+										<p>Ajoutez la ligne suivante à la fin du fichier, puis sauvegardez et quittez :</p>
+										<pre><code  class="language-bash">0 2 * * * /nas/data/backup_scripts/daily.sh</code></pre>
+										<p>Cela va lancer l’exécution du script daily.sh tous les jours à 2h du matin. En d’autres mots, cela assurera la procédure de backup quotidiennement tant que l’ordinateur et le Raspberry sont allumés évidemment.</p>
+									<h3 id="Encore_une_chose…"><a href="#Encore_une_chose…">Encore une chose…</a></h3>
+										<p>Félicitations, vous venez de finir la dernière étape de la création de votre propre NAS ! Certes cela aura pris un peu de temps, mais vous aurez définitivement économisé une belle somme en comparaison d’un NAS dédié du commerce.</p>
+										<p>Cependant, gardez en tête que ce bricolage est surtout expérimental, et que s’il convient parfaitement pour une utilisation légère et ludique, il n’est pas destiné à servir de support principal pour vos sauvegardes importantes. En effet, si les NAS du commerce ne sont pas bon marché, c’est parce qu’ils sont fiables et endurants. Tout y est pensé dans une optique d’efficacité et de sécurité. Notre petit projet avec un Raspberry n’est pas assuré de tenir sur le long terme sans aucune faille. Pour vos sauvegardes principales de vos données sensibles, préférez des techniques plus adaptées et sûres.</p>
+								
+								<h2 id="Conclusion"><a href="#Conclusion">Conclusion</a></h2>
+									<p>Avec la multitude de logiciels d’automatisation de backup disponibles et la démocratisation des supports de stockage externes, vous ne trouverez plus d’excuse pour vous en passer. Sauvegarder vos données est crucial pour en assurer la sécurité. Une panne de courant, une faille matérielle, un <a href="ransomware.html">ransomware</a> qui chiffre tout votre disque système, les différents incidents possibles sont trop nombreux que pour ne pas vous atteindre un jour ou l’autre. Et même si aucune solution est infaillible, vous dormirez plus tranquille en sachant qu’une copie de vos photos de vacances et de vos informations sensibles font la sieste loin des attaques de hacker. Si votre voiture a droit à son assurance, pourquoi pas votre vie informatique ?</p>
+								
+								<h2 id="References"><a href="#References">Références</a></h2>
+								<ul>
+									<li><a href="https://www.pcmag.com/article2/0,2817,2278661,00.asp">https://www.pcmag.com/article2/0,2817,2278661,00.asp</a></li>
+									<li><a href="https://www.pcmag.com/article2/0,2817,2288745,00.asp">https://www.pcmag.com/article2/0,2817,2288745,00.asp</a></li>
+									<li><a href="https://en.wikipedia.org/wiki/Backup">https://en.wikipedia.org/wiki/Backup</a></li>
+									<li><a href="https://searchdatabackup.techtarget.com/definition/backup">https://searchdatabackup.techtarget.com/definition/backup</a></li>
+									<li><a href="https://www.netapp.com/us/info/what-is-backup-and-recovery.aspx">https://www.netapp.com/us/info/what-is-backup-and-recovery.aspx</a></li>
+									<li><a href="https://www.cyberciti.biz/faq/how-to-ubuntu-nfs-server-configuration-howto/">https://www.cyberciti.biz/faq/how-to-ubuntu-nfs-server-configuration-howto/</a></li>
+									<li><a href="https://opensource.com/article/18/8/automate-backups-raspberry-pi">https://opensource.com/article/18/8/automate-backups-raspberry-pi</a></li>
+									<li><a href="https://www.01net.com/actualites/le-peer-to-peer-sinvite-dans-lasauvegarde-290104.html">https://www.01net.com/actualites/le-peer-to-peer-sinvite-dans-lasauvegarde-290104.html</a></li>
+								</ul>
+
+								<hr />
+								<ul class="actions fit" style="margin-bottom: 0px;">
+									<li><a href="#Introduction" class="button fit">Haut</a></li>
+								</ul>
+							</section>
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>19 Rue Joseph Calozet<br />
+								5000 Namur<br />
+								Belgique</p>
+							</section>
+							<section>
+								<h3>URL</h3>
+								<p><a href="https://www.henallux.be" target="_blank">henallux.be</a></p>
+							</section>
+						</section>
+						<section class="split contact">
+							<section>
+								<h3>Phone</h3>
+								<p><a href="tel:+3281468610">+32 (0)81 46 86 10</a></p>
+							</section>
+							<section>
+								<h3>Fax</h3>
+								<p><a href="fax:+3281733217">+32 (0)81 73 32 17</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="mailto:info.iesn@henallux.be">info.iesn@henallux.be</a></p>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Nobody</li><li>Design: <a href="https://html5up.net">HTML5 UP</a> &amp; <a href="https://prismjs.com">PRISM</a></li></ul>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/prism.js"></script>
+	</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="fr">
+	<head>
+		<title>Pignus - Honeypot</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
+		<link rel="stylesheet" href="../assets/css/perso.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo">Pignus</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../index.html">Accueil</a></li>
+							<li><a href="backup.html">Backup</a></li>
+							<li><a href="malware.html">Malware</a></li>
+							<li><a href="ransomware.html">Ransomware</a></li>
+							<li class="active"><a href="honeypot.html">Honeypot</a></li>
+						</ul>
+						<!--ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul-->
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">22 Décembre 2018</span>
+									<h1 id="Introduction">Honeypot<br />
+									N'y mettez pas vos mains</h1>
+									<p>Dans notre monde hautement informatisé, il est impossible d’écarter la possibilité de se faire attaquer via Internet. Il existe plusieurs procédures afin de se préparer à une telle attaque. Nous pouvons par exemple citer l'évaluation des surfaces d’attaque possibles, effectuer un audit du système, simuler des attaques, mitiger d’éventuelles vulnérabilités ou encore contrôler l’accès aux services.</p>
+									<p>Nous allons nous concentrer sur une autre option, cibler l’attention vers un service (ou une collection de services) prévu(e) à cet effet.</p>
+								</header>
+								
+								<div class="box" id="nav-article"><ul>
+									<li><a href="#Introduction">Introduction</a></li>
+									<li><a href="#Concept">Concept</a></li>
+									<li><a href="#Demonstration">Démonstration</a>
+										<ul>
+											<li><a href="#Details_importants">Détails importants</a></li>
+											<li><a href="#Installation_des_prerequis">Installation des prérequis</a></li>										
+											<li><a href="#Installation_de_cowrie">Installation de cowrie</a></li>
+											<li><a href="#Redirection_du_trafic">Redirection du trafic</a></li>
+											<li><a href="#Analyse_des_attaques">Analyse des attaques</a></li>
+										</ul>
+									</li>
+									<li><a href="#Conclusion">Conclusion</a></li>
+									<li><a href="#References">Références</a></li>
+								</ul></div>
+								<div class="image main"><img src="images/honeypot.jpg" alt="" /></div>
+								
+								<h2 id="Concept"><a href="#Concept">Concept</a></h2>
+								<p>Ne serait-il pas bien si nous pouvions</p>
+								<ul>
+									<li>Contrôler les attaqueurs</li>
+									<li>Observer leurs mouvements</li>
+									<li>Empêcher une attaque plus profonde du réseau</li>
+									<li>Sans que l’attaqueur ne s’en rende compte?</li>
+								</ul>
+								<p>Un attaqueur va souvent s’attaquer aux parties les plus exposées d’un système avant de creuser plus loin. Il suffit d’exposer un faux système apparemment facile à exploiter et de l’y piéger.</p>
+								<p>Un honeypot (aussi traduit en <em>Pot de miel</em>) est une interface simulant un logiciel (dans certains cas, un système d’exploitation entier, voire un réseau de machines) qui possède au moins une faille de sécurité connue et facile d’accès, permettant de (re)diriger une attaque vers un millieu sécurisé et contrôlé.</p>
+								<p>On peut généralement apprendre</p>
+								<ul>
+									<li>Comment l’attaqueur est entré dans le système</li>
+									<li>A quelles ressources a-t-il accédé</li>
+									<li>Quels fichiers ont été créés/modifiés</li>
+									<li>Quelles commandes ont été utilisées</li>
+									<li>Quelle est son IP</li>
+									<li>etc…</li>
+								</ul>
+								<p>Bien-sûr, un honeypot est souvent détectable.<br>
+									Que ce soit d’un comportement unique à ce honeypot, à une machine <em>étrangement</em> seule sur le réseau, des outils spécialisés (tel Honeypot Buster) sont capables d’automatiquement détecter si l’environnement actuel est un honeypot.<br>
+									Une façon d’être plus convaincant est d’avoir un réseau de plusieurs honeypots, appellé un <em>honey net</em>.</p>
+								
+								<h2 id="Demonstration"><a href="#Demonstration">Démonstration</a></h2>
+								<p>Pour cette démonstration, nous allons utiliser Cowrie, une évolution du honeypot populaire Kippo. Cowrie est capable de simuler ces services:</p>
+								<ul>
+									<li>Un système de fichier</li>
+									<li>De fausses commandes</li>
+									<li>SFTP et SCP</li>
+									<li>SMTP</li>
+									<li>SSH (et proxy via SSH)</li>
+									<li>Telnet</li>
+								</ul>
+								<p>Nous allons nous concentrer sur ces deux derniers, car ils sont des vecteurs d’attaque populaires.</p>
+								
+								<h3 id="Details_importants"><a href="#Details_importants">Détails importants</a></h3>
+								<ul>
+									<li>La distribution utilisée dans cette démonstration est Debian 9 “Stretch”, depuis un compte membre du groupe <em>sudoers</em>, et l’éditeur de texte sera <em>nano</em>.</li>
+									<li>La commande <code  class="language-bash">sudo</code> est succeptible de vous demander votre mot de passe. Ceci est nécessaire pour autoriser une action en tant que root. Votre mot de passe ne sera pas demandé à chaque commande.</li>
+									<li>Si vous êtes connecté via SSH, ou que votre distribution active SSHD par défaut, il est nécessaire de changer le port avant de commencer
+										<ul>
+											<li>Ouvrez un terminal, entrez <code  class="language-bash">sudo nano /etc/ssh/sshd_config</code></li>
+											<li>Trouvez la ligne <code  class="language-bash">Port 22</code>, et replacez <i>22</i> par un autre port (Par exemple, <i>4096</i>)</li>
+											<li>Sortez à l’aide de <code>Ctrl ^ C</code>, sans oublier de confirmer vos changements</li>
+											<li>Rechargez la configuration du daemon SSH avec <code  class="language-bash">sudo systemctl restart sshd</code></li>
+										</ul>
+									</li>
+								</ul>
+								
+								<h3 id="Installation_des_prerequis"><a href="#Installation_des_prerequis">Installation des prérequis</a></h3>
+								<ul>
+									<li>Assurez vous que vous êtes en possession des dernières définitions des listes de paquets
+										<pre><code  class="language-bash">sudo apt update</code></pre>
+									</li>
+									<li>Téléchargez les dépendances requises pour cowrie.
+									<br /><strong><em>Attention</em></strong>: Python 2.7 est requis pour le bon fonctionnement de cowrie.
+										<pre><code  class="language-bash">sudo apt install git python-virtualenv libssl-dev libffi-dev build-essential libpython-dev python2.7-minimal authbind</code></pre>
+									</li>
+								</ul>
+								
+								<h3 id="Installation_de_cowrie"><a href="#Installation_de_cowrie">Installation de cowrie</a></h3>
+								<ul>
+									<li>
+										<p>Créez un utilisateur pour cowrie</p>
+										<pre><code  class="language-bash">sudo adduser cowrie</code></pre>
+									</li>
+									<li>
+										<p>Connectez vous en tant que l’utilisateur <i>cowrie</i></p>
+										<pre><code  class="language-bash">sudo su - cowrie</code></pre>
+									</li>
+									<li>
+										<p>Téléchargez cowrie depuis le dépot Github, puis déplacez vous dans le nouveau dossier</p>
+										<pre><code  class="language-bash">git clone https://github.com/cowrie/cowrie
+cd cowrie</code></pre>
+									</li>
+									<li>
+										<p>Créez un environnement virtuel python pour isoler cowrie, et activez le</p>
+										<pre><code  class="language-bash">virtualenv cowrie-env
+source cowrie-env/bin/activate</code></pre>
+									</li>
+									<li>
+										<p>Mettez <i>pip</i> à jour, et installez les dépendances python</p>
+										<pre><code  class="language-bash">pip install --upgrade pip
+pip install --upgrade -r requirements.txt</code></pre>
+									</li>
+									<li>
+										<p>Copiez l’exemple de configuration, et modifiez le</p>
+										<ul>
+											<li><code  class="language-bash">cp etc/cowrie.cfg.dist etc/cowrie.cfg</code></li>
+											<li><code  class="language-bash">nano etc/cowrie.cfg</code></li>
+											<li>À la ligne <code  class="language-bash">hostname = svr04</code>, remplacez <code  class="language-bash">svr04</code> par le nom que vous désirez que votre honeypot affiche</li>
+											<li>Trouvez
+												<pre><code  class="language-bash">[telnet]
+
+# Enable Telnet support, disabled by default
+enabled = true</code></pre>
+												Et remplacez <code  class="language-bash">false</code> par <code  class="language-bash">true</code>, ceci
+												activera Telnet</li>
+										</ul>
+									</li>
+									<li>
+										<p>Créez un fichier de logins</p>
+										<ul>
+											<li><code  class="language-bash">cp etc/userdb.example etc/userdb.txt</code></li>
+											<li>la configuration par défaut fonctionne</li>
+											<li>Si vous voulez plus d’activité, et moins de bruteforce de mot de passe
+												<ul>
+													<li><code  class="language-bash">nano etc/userdb.txt</code></li>
+													<li>Remplacez les identifiants existants par<pre><code  class="language-bash">root:x:*admin:x:*</code></pre></li>
+													<li>Ceci garantit presque un login immédiat des attaquants</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<p>Lancez cowrie</p>
+										<pre><code  class="language-bash">bin/cowrie start</code></pre>
+									</li>
+								</ul>
+								
+								<h3 id="Redirection_du_trafic"><a href="#Redirection_du_trafic">Redirection du trafic</a></h3>
+								<p>Il est possible de configurer cowrie pour qu’il écoute directement sur le port 22/23. Cependant, Linux refuse qu’un processus non-élevé écoute sur un port en dessous de 1024. Nous allons donc rediriger le trafic de ces ports vers cowrie à l’aide d’iptables.</p>
+								<ul>
+									<li>
+										<p>Sortez de l’environnement de cowrie</p>
+										<pre><code  class="language-bash">exit</code></pre>
+									</li>
+									<li>
+										<p>Configurez la redirection de ports</p>
+										<pre><code  class="language-bash">sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222
+sudo iptables -t nat -A PREROUTING -p tcp --dport 23 -j REDIRECT --to-port 2223</code></pre>
+									</li>
+								</ul>
+								
+								<h3 id="Analyse_des_attaques"><a href="#Analyse_des_attaques">Analyse des attaques</a></h3>
+								<p>La découverte de votre honeypot peut prendre plus de 30 minutes. Une fois que votre IP est découverte, attendez-vous à un fort flux de trafic. En effet, lors de nos tests, environ 66MB de logs sont générés <strong><em>dans les premières 24 heures</em></strong></p>
+								<ul>
+									<li>
+										<p>Observez les logs</p>
+										<ul>
+											<li><code  class="language-bash">tail -f /home/cowrie/cowrie/var/log/cowrie/cowrie.log</code></li>
+											<li>Ceci vous affiche une vue en direct des logs</li>
+										</ul>
+									</li>
+									<li>
+										<p>Analysez les logs (Timestamps supprimés pour la clarté)</p>
+										<ul>
+											<li>Les logs suivants correspondent au botnet pour IoT Mirai</li>
+											<li>cowrie dépose une copie des fichiers créés dans le dossier spécifié par les logs.</li>
+										</ul>
+										<p><button class="boutton" title="Clicker pour afficher/cacher les logs" type="button" onclick="if(document.getElementById('log') .style.display=='none') {document.getElementById('log') .style.display=''}else{document.getElementById('log') .style.display='none'}">Afficher/Cacher les logs</button></p>
+<pre id="log" style="display: none"><code  class="language-bash">2018-12-17T00:24:54.694882+0100 [cowrie.telnet.transport.HoneyPotTelnetFactory] New connection: XXX.XXX.XXX.XXX:34505 (YYY.YYY.YYY.YYY:2223) [session: 8c1be57bfca6]
+2018-12-17T00:25:15.449360+0100 [CowrieTelnetTransport,56,XXX.XXX.XXX.XXX] login attempt [root/xc3511] succeeded
+Initialized emulated server as architecture: linux-x64-lsb
+Warning: state changed and new state returned
+CMD: enable
+Command found: enable 
+Reading txtcmd from &quot;share/cowrie/txtcmds/bin/enable&quot;
+CMD: shell
+Can't find command None
+Command not found: shell
+CMD: sh
+Command found: sh 
+CMD: /bin/busybox ECCHI
+Command found: /bin/busybox ECCHI
+Can't find command None
+CMD: /bin/busybox ps; /bin/busybox ECCHI
+Command found: /bin/busybox ps
+Command found: ps
+Command found: /bin/busybox ECCHI
+Can't find command None
+CMD: /bin/busybox cat /proc/mounts; /bin/busybox ECCHI
+Command found: /bin/busybox cat /proc/mounts
+Command found: cat /proc/mounts
+Command found: /bin/busybox ECCHI
+Can't find command None
+CMD: /bin/busybox echo -e '\x6b\x61\x6d\x69' > /.nippon; /bin/busybox cat /.nippon; /bin/busybox rm /.nippon
+Command found: /bin/busybox echo -e \x6b\x61\x6d\x69 > /.nippon
+Command found: echo -e \x6b\x61\x6d\x69
+Command found: /bin/busybox cat /.nippon
+Command found: cat /.nippon
+Command found: /bin/busybox rm /.nippon
+Command found: rm /.nippon
+... ... ...
+CMD: /bin/busybox echo -e '\x6b\x61\x6d\x69/dev' > /dev/.nippon; /bin/busybox cat /dev/.nippon; /bin/busybox rm /dev/.nippon
+Command found: /bin/busybox echo -e \x6b\x61\x6d\x69/dev > /dev/.nippon
+Command found: echo -e \x6b\x61\x6d\x69/dev
+Command found: /bin/busybox cat /dev/.nippon
+Command found: cat /dev/.nippon
+Command found: /bin/busybox rm /dev/.nippon
+Command found: rm /dev/.nippon
+CMD: /bin/busybox ECCHI
+Command found: /bin/busybox ECCHI
+Can't find command None
+CMD: rm /.t; rm /.sh; rm /.human
+Command found: rm /.t
+Command found: rm /.sh
+Command found: rm /.human
+... ... ...
+CMD: rm /dev/.t; rm /dev/.sh; rm /dev/.human
+Command found: rm /dev/.t
+Command found: rm /dev/.sh
+Command found: rm /dev/.human
+CMD: cd /
+Command found: cd /
+CMD: /bin/busybox cp /bin/echo dvrHelper; >dvrHelper; /bin/busybox chmod 777 dvrHelper; /bin/busybox ECCHI
+Command found: /bin/busybox cp /bin/echo dvrHelper
+Command found: cp /bin/echo dvrHelper
+Command found: > dvrHelper
+Command found: /bin/busybox chmod 777 dvrHelper
+Command found: chmod 777 dvrHelper
+Command found: /bin/busybox ECCHI
+Can't find command None
+CMD: /bin/busybox cat /bin/echo
+Command found: /bin/busybox cat /bin/echo
+Command found: cat /bin/echo
+CMD: /bin/busybox ECCHI
+Command found: /bin/busybox ECCHI
+Can't find command None
+Duplicate redir content with hash 4661c2c5d8280bd250a87a2cb7778eaa6554baea0b3518582f36e2d4288a3e91
+Saved redir contents with SHA-256 4661c2c5d8280bd250a87a2cb7778eaa6554baea0b3518582f36e2d4288a3e91 to var/lib/cowrie/downloads/4661c2c5d8280bd250a87a2cb7778eaa6554baea0b3518582f36e2d4288a3e91
+Duplicate redir content with hash 4ba7955eabd123c229edc3a85b8ccdb925f298780e3eab90a2e605d401b6bd3d
+Saved redir contents with SHA-256 4ba7955eabd123c229edc3a85b8ccdb925f298780e3eab90a2e605d401b6bd3d to var/lib/cowrie/downloads/4ba7955eabd123c229edc3a85b8ccdb925f298780e3eab90a2e605d401b6bd3d
+Duplicate redir content with hash c1bc02f07b7473393978b3db825f870aa4be5622aef289805f7b8c0d86017fb4
+Saved redir contents with SHA-256 c1bc02f07b7473393978b3db825f870aa4be5622aef289805f7b8c0d86017fb4 to var/lib/cowrie/downloads/c1bc02f07b7473393978b3db825f870aa4be5622aef289805f7b8c0d86017fb4
+Duplicate redir content with hash 0a620f7d4afdd219606bed1606da5faed1e0925ceeaa30187e11fb05248b0998
+Saved redir contents with SHA-256 0a620f7d4afdd219606bed1606da5faed1e0925ceeaa30187e11fb05248b0998 to var/lib/cowrie/downloads/0a620f7d4afdd219606bed1606da5faed1e0925ceeaa30187e11fb05248b0998
+Duplicate redir content with hash 19a34e6b661946f1dbbfee814c3e1f81b9cefdfd9e759434f338509f447befb9
+Saved redir contents with SHA-256 19a34e6b661946f1dbbfee814c3e1f81b9cefdfd9e759434f338509f447befb9 to var/lib/cowrie/downloads/19a34e6b661946f1dbbfee814c3e1f81b9cefdfd9e759434f338509f447befb9
+Duplicate redir content with hash 621c061dcf2120c74bda9ab2ef1b16790c433ffece1e1df5a5f863b18e3da538
+Saved redir contents with SHA-256 621c061dcf2120c74bda9ab2ef1b16790c433ffece1e1df5a5f863b18e3da538 to var/lib/cowrie/downloads/621c061dcf2120c74bda9ab2ef1b16790c433ffece1e1df5a5f863b18e3da538
+Duplicate redir content with hash 6a258b079141b172b33a503d7754702fa8b101ddb07957b71e2c1fcd1201715c
+Saved redir contents with SHA-256 6a258b079141b172b33a503d7754702fa8b101ddb07957b71e2c1fcd1201715c to var/lib/cowrie/downloads/6a258b079141b172b33a503d7754702fa8b101ddb07957b71e2c1fcd1201715c
+Duplicate TTY log with hash f12b9be3671d29e18a8674ed5e9d4d59087e6bd3e9c296aec7effce16021ba20
+Closing TTY Log: var/lib/cowrie/tty/f12b9be3671d29e18a8674ed5e9d4d59087e6bd3e9c296aec7effce16021ba20 after 53 seconds
+Connection lost after 74 seconds</code></pre>
+									</li>
+								</ul>
+								
+								<h2 id="Conclusion"><a href="#Conclusion">Conclusion</a></h2>
+									<p>Les honeypots tel que cowrie, bien qu’imparfaits, sont capables de détecter les menaces automatiques sans problèmes, et est probablement capable de capturer un hacker novice. Les informations rapportées par un tel programme indiquent quelles menaces sont actives sur internet, et peuvent permettre de prioritiser une stratégie de sécurité par rapport à une autre. Par exemple, ce log nous permet d’apprendre qu’un botnet automatisé est	capable de se répandre grâce à un port telnet exposé, combiné avec des identifiants basse sécurité. Il ne faut aussi jamais oublier qu’un Honeypot reste un programme potentiellement vulnérable, et doit être utilisé avec précaution.</p>
+								
+								<h2 id="References"><a href="#References">Références</a></h2>
+									<ul>
+										<li><a href="https://whatis.techtarget.com/definition/virtual-honeypot">https://whatis.techtarget.com/definition/virtual-honeypot</a></li>
+										<li><a href="https://jblog.javelin-networks.com/blog/the-honeypot-buster/">https://jblog.javelin-networks.com/blog/the-honeypot-buster/</a></li>
+										<li><a href="https://null-byte.wonderhowto.com/how-to/use-cowrie-ssh-honeypot-catch-attackers-your-network-0181600/">https://null-byte.wonderhowto.com/how-to/use-cowrie-ssh-honeypot-catch-attackers-your-network-0181600/</a></li>
+										<li><a href="https://hackertarget.com/cowrie-honeypot-ubuntu/">https://hackertarget.com/cowrie-honeypot-ubuntu/</a></li>
+										<li><a href="https://github.com/cowrie/cowrie">https://github.com/cowrie/cowrie</a></li>
+										<li><a href="https://github.com/desaster/kippo">https://github.com/desaster/kippo</a></li>
+										<li><a href="https://www.debian.org/releases/stretch/debian-installer/">https://www.debian.org/releases/stretch/debian-installer/</a></li>
+										<li><a href="https://medium.com/rootsgarden/playing-with-a-mirai-honeypot-mtpot-790f59fa3fea">https://medium.com/rootsgarden/playing-with-a-mirai-honeypot-mtpot-790f59fa3fea</a></li>
+									</ul>
+
+								<hr />
+								<ul class="actions fit" style="margin-bottom: 0px;">
+									<li><a href="#Introduction" class="button fit">Haut</a></li>
+								</ul>
+							</section>
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>19 Rue Joseph Calozet<br />
+								5000 Namur<br />
+								Belgique</p>
+							</section>
+							<section>
+								<h3>URL</h3>
+								<p><a href="https://www.henallux.be" target="_blank">henallux.be</a></p>
+							</section>
+						</section>
+						<section class="split contact">
+							<section>
+								<h3>Phone</h3>
+								<p><a href="tel:+3281468610">+32 (0)81 46 86 10</a></p>
+							</section>
+							<section>
+								<h3>Fax</h3>
+								<p><a href="fax:+3281733217">+32 (0)81 73 32 17</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="mailto:info.iesn@henallux.be">info.iesn@henallux.be</a></p>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Nobody</li><li>Design: <a href="https://html5up.net">HTML5 UP</a> &amp; <a href="https://prismjs.com">PRISM</a></li></ul>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/prism.js"></script>
+	</body>
+</html>

